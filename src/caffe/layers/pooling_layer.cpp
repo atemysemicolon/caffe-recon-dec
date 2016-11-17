@@ -159,7 +159,7 @@ void PoolingLayer<Dtype>::Reshape(const vector<Blob<Dtype>*>& bottom,
 	  CHECK( bottom[1]->shape() == top[0]->shape() ) << "wrong size of switch input";
   } else if ( this->layer_param_.pooling_param().pool() ==
           PoolingParameter_PoolMethod_SOFT_SWITCH ) {
-	  auto switch_shape = top[0]->shape();
+	  vector<int> switch_shape = top[0]->shape();
 	  switch_shape.insert( switch_shape.begin()+1, kernel_w_*kernel_h_ );
 	  CHECK( bottom[1]->shape() == switch_shape ) << "wrong size of soft switch input";
   }

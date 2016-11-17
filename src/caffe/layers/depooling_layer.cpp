@@ -20,7 +20,7 @@ LayerParameter DepoolingLayer_PoolLayer_Param( const LayerParameter& p ) {
     LayerParameter q;
     q.set_name( p.name() + " [reverse pooling]" );
     q.set_type( "Pooling" );
-    auto& pool_param = *(q.mutable_pooling_param());
+    PoolingParameter& pool_param = *(q.mutable_pooling_param());
     pool_param = p.pooling_param();
     if (pool_param.pool()==PoolingParameter_PoolMethod_MAX) {
     	pool_param.set_pool(PoolingParameter_PoolMethod_SWITCH);
